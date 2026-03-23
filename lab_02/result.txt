@@ -1,0 +1,29 @@
+E-commerce Sales Analysis Report
+========================================
+
+Generated dataset preview:
+ order_id       date  amount    category return_status payment_method  quantity
+        1 2024-01-01  380.79 Electronics  Not Returned         Online         5
+        2 2024-01-02  951.21       Books  Not Returned         Online         4
+        3 2024-01-03  734.67      Sports  Not Returned         Online         2
+        4 2024-01-04  602.67       Books  Not Returned           Cash         4
+        5 2024-01-05  164.46      Sports  Not Returned           Cash         2
+
+Descriptive statistics for business metrics:
+           amount    quantity
+count  100.000000  100.000000
+mean   475.479300    2.980000
+std    294.514525    1.449347
+min     15.470000    1.000000
+25%    201.267500    2.000000
+50%    469.500000    3.000000
+75%    732.900000    4.000000
+max    987.020000    5.000000
+
+Average order amount by category:
+category
+Books          499.86
+Clothing       487.89
+Electronics    420.51
+Home           427.84
+Sports         591.70
