@@ -1,0 +1,70 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def generate_data(num_rows: int = 100) -> pd.DataFrame:
+    np.random.seed(42)
+
+    categories = ["Electronics", "Clothing", "Home", "Books", "Sports"]
+    return_statuses = ["Returned", "Not Returned"]
+    payment_methods = ["Card", "Cash", "Online"]
+
+    data = {
+        "order_id": np.arange(1, num_rows + 1),
+        "date": pd.date_range(start="2024-01-01", periods=num_rows, freq="D"),
+        "amount": np.round(np.random.uniform(10, 1000, num_rows), 2),
+        "category": np.random.choice(categories, num_rows),
+        "return_status": np.random.choice(return_statuses, num_rows, p=[0.2, 0.8]),
+        "payment_method": np.random.choice(payment_methods, num_rows),
+        "quantity": np.random.randint(1, 6, num_rows)
+    }
+
+    return pd.DataFrame(data)
+
+
+def main():
+    df = generate_data()
+
+    # Анализ только бизнес-метрик
+    stats = df[["amount", "quantity"]].describe()
+
+    # Средний чек по категориям
+    avg_by_category = df.groupby("category")["amount"].mean().round(2)
+
+    # 📊 Построение графика
+    plt.figure()
+    avg_by_category.plot(kind="bar")
+    plt.title("Average Order Amount by Category")
+    plt.xlabel("Category")
+    plt.ylabel("Average Amount")
+    plt.tight_layout()
+
+    # Сохраняем график
+    plt.savefig("plot.png")
+    plt.close()
+
+    # 📄 Запись отчета
+    with open("result.txt", "w", encoding="utf-8") as file:
+        file.write("E-commerce Sales Analysis Report\n")
+        file.write("=" * 40 + "\n\n")
+
+        file.write("Generated dataset preview:\n")
+        file.write(df.head().to_string(index=False))
+        file.write("\n\n")
+
+        file.write("Descriptive statistics (amount, quantity):\n")
+        file.write(stats.to_string())
+        file.write("\n\n")
+
+        file.write("Average order amount by category:\n")
+        file.write(avg_by_category.to_string())
+        file.write("\n")
+
+    # 📺 Вывод в консоль
+    with open("result.txt", "r", encoding="utf-8") as file:
+        print(file.read())
+
+
+if __name__ == "__main__":
+    main()
