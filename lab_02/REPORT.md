@@ -61,7 +61,7 @@
 
 Файл requirements.txt
 
-![зависимости](requ.jpg)
+![зависимости](img/reque.jpg)
 
 ### Этап 4. Создание Dockerfile
 Что должен делать Dockerfile:
@@ -97,9 +97,9 @@
 
 ### Файлы
 
-![main](main.py) - код аналитического приложения 
-![dockerfile](Dockerfile) - Файл инструкций сборки
-![requirements](requirements.txt) - Файл зависимостей
-![result](result.txt) - результат 
+- [main](main.py) - код аналитического приложения 
+- [dockerfile](Dockerfile) - Файл инструкций сборки
+- [requirements](requirements.txt) - Файл зависимостей
+- [result](result.txt) - результат 
 
 
