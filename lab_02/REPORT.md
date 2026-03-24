@@ -61,7 +61,7 @@
 
 Файл requirements.txt
 
-![зависимости](img/requ.jpg)
+![зависимости](requ.jpg)
 
 ### Этап 4. Создание Dockerfile
 Что должен делать Dockerfile:
