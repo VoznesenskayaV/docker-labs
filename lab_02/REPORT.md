@@ -114,6 +114,7 @@
 - [main](main.py) - код аналитического приложения 
 - [dockerfile](Dockerfile) - Файл инструкций сборки
 - [requirements](requirements.txt) - Файл зависимостей
-- [result](result.txt) - результат 
+- [result](result.txt) - результат
+- [docker_compose](docker-compose.yml) - файл docker compose
 
 
