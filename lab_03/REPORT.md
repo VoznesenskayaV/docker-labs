@@ -76,7 +76,6 @@
 Были выполнены команды:
 
 ![этап6](img/step6.jpg)
-![этап7](img/step7.jpg)
 
 ![services](img/get_services.jpg)
 
