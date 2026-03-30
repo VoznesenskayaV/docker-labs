@@ -79,6 +79,8 @@
 
 ![services](img/get_services.jpg)
 
+![pods](img/get_pods.jpg)
+
 Результат:
 
 * Pod находится в статусе `Running`
