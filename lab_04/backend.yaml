@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab41-backend-deploy
+  namespace: lab41
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lab41-backend
+  template:
+    metadata:
+      labels:
+        app: lab41-backend
+    spec:
+      containers:
+      - name: backend
+        image: task-backend:v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DB_HOST
+          value: "lab41-postgres-service"
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: lab41-postgres-secret
+              key: POSTGRES_DB
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: lab41-postgres-secret
+              key: POSTGRES_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: lab41-postgres-secret
+              key: POSTGRES_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab41-backend-service
+  namespace: lab41
+spec:
+  selector:
+    app: lab41-backend
+  ports:
+    - port: 8000
+      targetPort: 8000
+  type: ClusterIP
